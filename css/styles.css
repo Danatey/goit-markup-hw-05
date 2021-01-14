@@ -9,6 +9,9 @@
   --hero-background: #c4c4c4;
   --index-icon-background: #f5f4fa;
   --social-link-color: #afb1b8;
+
+  --transition-time: 250ms;
+  --cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
   background-color: var(--primary-color);
@@ -40,6 +43,10 @@ li {
 .nav-item:focus {
   color: var(--accent-color);
   fill: var(--accent-color);
+
+  transition-property: color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .nav-item,
 .comand-name {
@@ -93,7 +100,7 @@ button {
 }
 header {
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 23px;
 }
 .conteiner {
   width: 1200px;
@@ -106,6 +113,10 @@ header > .conteiner,
 .header-nav,
 .header-link,
 .header-contacts {
+  display: flex;
+  align-items: center;
+}
+ {
   display: flex;
   align-items: center;
 }
@@ -126,6 +137,45 @@ header ul {
 .header-link > li:not(:last-child),
 .header-contacts > li:not(:last-child) {
   padding-right: 50px;
+}
+.page-active,
+.nav-item {
+  position: relative;
+
+  padding: 32px 0px;
+}
+.page-active::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+
+  background-color: var(--accent-color);
+}
+.nav-item:hover::after,
+.nav-item:focus::after {
+  content: "";
+
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+
+  background-color: var(--accent-color);
+
+  transition-property: color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .header-address {
   display: flex;
@@ -178,6 +228,10 @@ footer li:not(:last-child) {
 .social-cards:hover,
 .social-cards:focus {
   background-color: var(--accent-color);
+
+  transition-property: background-color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .social-links {
   display: block;
@@ -188,6 +242,13 @@ footer li:not(:last-child) {
 }
 /* index.html */
 .hero-section {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  max-width: 1600px;
+  height: 600px;
+
   color: var(--primary-color);
   background-position: center;
   background-image: linear-gradient(
@@ -197,13 +258,6 @@ footer li:not(:last-child) {
     ),
     url("../img/background-hero.jpg");
   background-color: var(--hero-background);
-
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 200px;
-  padding-bottom: 200px;
-  max-width: 1600px;
-  height: 600px;
 }
 
 .button-active {
@@ -215,6 +269,10 @@ footer li:not(:last-child) {
 .button:focus {
   background-color: var(--accent-color);
   color: var(--primary-color);
+
+  transition-property: background-color, color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .advantages-background {
   background-color: var(--index-icon-background);
@@ -299,11 +357,36 @@ footer li:not(:last-child) {
   margin-bottom: 0px;
   padding: 0px;
 }
+.working-conteiner {
+  position: relative;
+}
 .we-are-working img {
   display: block;
 }
 .we-are-working li:not(:last-child) {
   margin-right: 30px;
+}
+.working-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  text-align: center;
+  width: 370px;
+  height: 70px;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+.working-content > .pfrase {
+  margin-top: auto;
+  margin-bottom: auto;
+
+  font-weight: bold;
+  line-height: 16px;
+  text-transform: uppercase;
+
+  color: var(--primary-color);
 }
 .team-section {
   background-color: var(--background-additional-color);
@@ -384,6 +467,10 @@ footer li:not(:last-child) {
 .team-list a:focus {
   background-color: var(--accent-color);
   color: var(--primary-color);
+
+  transition-property: background-color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .team-links {
   display: block;
@@ -418,6 +505,10 @@ footer li:not(:last-child) {
 .client-cards:focus {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
+
+  transition-property: color;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
 }
 .client-icon {
   display: block;
@@ -480,6 +571,22 @@ footer li:not(:last-child) {
 .works-card:hover,
 .works-card:focus-within {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  transition-property: box-shadow;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
+}
+.works-card > a:focus .project-anonimus {
+  transition-property: transform;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
+  transform: translateY(0);
+}
+.works-card:hover .project-anonimus {
+  transition-property: transform;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
+  transform: translateY(0);
 }
 .works-list img {
   display: block;
@@ -507,4 +614,36 @@ footer li:not(:last-child) {
 
   margin-top: 0px;
   margin-bottom: 0px;
+}
+.works-image {
+  position: relative;
+  overflow: hidden;
+}
+.project-anonimus {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding-top: 63px;
+  padding-right: 24px;
+  padding-bottom: 63px;
+  padding-left: 24px;
+
+  background-color: var(--accent-color);
+  opacity: 0.9;
+
+  transition-property: transform;
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--cubic);
+  transform: translateY(100%);
+}
+.no-reed-this {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: bold;
+
+  color: var(--primary-color);
 }
